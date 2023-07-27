@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,14 +13,14 @@
       <h1 id="header-title">Item Lister <span style="display:none">123</span></h1>
     </div>
   </header>
-  <div class="container">
-   <div id="main" class="card card-body">
-    <h2 class="title">Add Items</h2>
-    <form class="form-inline mb-3">
+  <div> class="container">
+   <div> id="main" class="card card-body">
+    <h2> class="title">Add Items</h2>
+    <form> class="form-inline mb-3">
       <input type="text" class="form-control mr-2">
       <input type="submit" class="btn btn-dark" value="Submit">
     </form>
-    <h2 class="title">Items</h2>
+    <h2> class="title">Items</h2>
     <ul id="items" class="list-group">
       <li class="list-group-item">Item 1</li>
       <li class="list-group-item">Item 2</li>
@@ -33,5 +32,3 @@
 
 </body>
 </html>
-index.html
-Displaying index.html.
