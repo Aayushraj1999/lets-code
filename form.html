@@ -8,8 +8,10 @@
             <label> phone number</label>
             <input type ="telephone" name="phonenumber" required/>
             <button> Submit</button>
+        
         </form>
         <ul id ='listofitems'></ul>
+           
         <script>
             function saveToLocalStorage(event){
                 event.preventDefault();
@@ -32,6 +34,18 @@
             const childElem = document.createElement('li')
             childElem.textContent = obj.name + '-' + obj.email + '-'  + obj.phonenumber
             parentElem.appendChild(childElem)
+
+
+            const deleteButton =document.createElement('input')
+            deleteButton.type= "button"
+            deleteButton.value= "Delete"
+            deleteButton.onclick =() =>{
+                local.removeItem(obj.email)
+                parentElem.removeChild(childElem)
+            }
+            childElem.appendChild(deleteButton)
+            parentElem.appendChild(childElem)
+
          }
 
 
