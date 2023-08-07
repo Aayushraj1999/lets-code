@@ -32,7 +32,7 @@
          function ShowUserOnScreen(obj) {
             const parentElem = document.getElementById('listofitems')
             const childElem = document.createElement('li')
-            childElem.textContent = obj.name + '-' + obj.email + '-'  + obj.phonenumber
+            childElem.textContent = obj.name + ' - ' + obj.email + ' - '  + obj.phonenumber
             parentElem.appendChild(childElem)
 
 
@@ -44,6 +44,17 @@
                 parentElem.removeChild(childElem)
             }
             childElem.appendChild(deleteButton)
+            parentElem.appendChild(childElem)
+
+
+            const editButton =document.createElement('input')
+            editButton.type= "button"
+            editButton.value="edit"
+            editButton.onclick=() => {
+                local.removeItem(obj.email)
+                parentElem.removeChild(childElem)
+            }
+            childElem.appendChild(editButtona)
             parentElem.appendChild(childElem)
 
          }
