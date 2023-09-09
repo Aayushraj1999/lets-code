@@ -1,67 +1,80 @@
 <html>
-    <body>
-        <form onsubmit="saveToLocalStorage(event)">
-            <label> Name</label>
-            <input type ="text" name="username" required/>
-            <label> EmailId</label>
-            <input type ="email" name="emailId" required/>
-            <label> phone number</label>
-            <input type ="telephone" name="phonenumber" required/>
-            <button> Submit</button>
-        
-        </form>
-        <ul id ='listofitems'></ul>
-           
-        <script>
-            function saveToLocalStorage(event){
-                event.preventDefault();
-                const name= event.target.username.value;
-                const email=event.target.emailId.value;
-                const phonenumber=event.target.phonenumber.value;
-                //localStorage.setItem('name', name);
-                //localStorage.setItem('email', email);
-                //localStorage.setItem('phonenumber', phonenumber);
-                const obj= {
-                    name,
-                    email,
-                    phonenumber,
-                }
-                localStorage.setItem('userDetails',JSON.stringify(obj))
-                ShowUserOnScreen(obj)
+
+<body>
+    <form onsubmit="saveToLocalStorage(event)">
+        <label> Name</label>
+        <input type="text" name="username" required />
+        <label> EmailId</label>
+        <input type="email" name="emailId" required />
+        <label> phone number</label>
+        <input type="telephone" name="phonenumber" required />
+        <button> Submit</button>
+
+    </form>
+    <ul id='listofitems'></ul>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js"></script>
+    <script>
+        function saveToLocalStorage(event) {
+            event.preventDefault();
+            const name = event.target.username.value;
+            const email = event.target.emailId.value;
+            const phonenumber = event.target.phonenumber.value;
+            //localStorage.setItem('name', name);
+            //localStorage.setItem('email', email);
+            //localStorage.setItem('phonenumber', phonenumber);
+            const obj = {
+                name,
+                email,
+                phonenumber,
             }
-         function ShowUserOnScreen(obj) {
+            axios.post("https://crudcrud.com/api/e12af17a21064b648f7a483b38097a28/appointmentData", obj)
+                .then((response) => {
+                    showUserOnScreen(response.data)
+              console.log(response)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+
+
+
+            //localStorage.setItem(obj.email,JSON.stringify(obj))
+              //showUserOnScreen(obj);
+        }
+        function showUserOnScreen(obj) {
             const parentElem = document.getElementById('listofitems')
             const childElem = document.createElement('li')
-            childElem.textContent = obj.name + ' - ' + obj.email + ' - '  + obj.phonenumber
+            childElem.textContent = obj.name + ' - ' + obj.email + ' - ' + obj.phonenumber
             parentElem.appendChild(childElem)
 
 
-            const deleteButton =document.createElement('input')
-            deleteButton.type= "button"
-            deleteButton.value= "Delete"
-            deleteButton.onclick =() =>{
-                local.removeItem(obj.email)
-                parentElem.removeChild(childElem)
+            const deleteButton = document.createElement('input')
+            deleteButton.type = "button"
+            deleteButton.value = "Delete"
+            deleteButton.onclick = () => {
+                local.removeItem(obj.email);
+                parentElem.removeChild(childElem);
             }
-            childElem.appendChild(deleteButton)
-            parentElem.appendChild(childElem)
+            childElem.appendChild(deleteButton);
+            parentElem.appendChild(childElem);
 
 
-            const editButton =document.createElement('input')
-            editButton.type= "button"
-            editButton.value="edit"
-            editButton.onclick=() => {
-                local.removeItem(obj.email)
-                parentElem.removeChild(childElem)
+            const editButton = document.createElement('input');
+            editButton.type = "button";
+            editButton.value = "Edit";
+            editButton.onclick = () => {
+                local.removeItem(obj.email);
+                parentElem.removeChild(childElem);
             }
-            childElem.appendChild(editButtona)
-            parentElem.appendChild(childElem)
+            childElem.appendChild(editButton);
+            parentElem.appendChild(childElem);
 
-         }
+        }
 
 
-    
-        </script>
 
-    </body>
+    </script>
+
+</body>
+
 </html>
