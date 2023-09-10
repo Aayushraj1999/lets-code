@@ -125,11 +125,22 @@
             editButton.type = "button";
             editButton.value = "Edit";
             editButton.onclick = () => {
-                local.removeItem(obj.email);
+                axios.delete(`https://crudcrud.com/api/e12af17a21064b648f7a483b38097a28/appointmentData/${obj._id}`)
+                 .then((res)=>{
+                    console.log(res);
+                 })
+                   .catch((err)=>{
+                      console.log(err)
+
+
+
+                //local.removeItem(obj.email);
                 parentElem.removeChild(childElem);
-            }
-            childElem.appendChild(editButton);
-            parentElem.appendChild(childElem);
+                dcument.getElementById('name').value = obj.name;
+                document.getElementById('email'.value) = obj.email;
+            
+            //childElem.appendChild(editButton);
+            //parentElem.appendChild(childElem);
 
         }
 
